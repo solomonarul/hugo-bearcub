@@ -1,4 +1,6 @@
 <a class="skip-link" href="#main-content">{{ i18n "skip-link" }}</a>
 
-<a href="{{ relURL .Site.Home.RelPermalink }}" class="title"><h1>{{ .Site.Params.HomeTitle }}</h1></a>
+<p align="center">
+    <h1>{{ .Site.Params.HomeTitle }}</h1>
+</p>
 <nav>{{- partial "nav.html" . -}}</nav>
