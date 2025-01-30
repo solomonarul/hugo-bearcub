@@ -1,11 +1,14 @@
 {{ define "main" }}
 <content>
+  {{ .Content }}
+
   {{ if .Data.Singular }}
     <h3 class="blog-filter">{{ i18n "filtering-for" }} "{{ .Title }}"</h3>
   {{ end }}
   <ul class="blog-posts">
     {{ range .Pages }}
     <li>
+      {{ if .Date }}
       <span>
         <i>
           <time datetime='{{ .Date.Format "02.01.2006" }}' pubdate>
@@ -13,6 +16,7 @@
           </time>
         </i>
       </span>
+      {{ end }}
       {{ if .Params.link }}
         <a href="{{ .Params.link }}" target="_blank">{{ .Title }} ↪</a>
       {{ else }}
