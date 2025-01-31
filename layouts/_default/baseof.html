@@ -11,11 +11,11 @@
   {{- partial "seo_tags.html" . -}}
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  {{ $style := print (default "original" .Site.Params.themeStyle) ".css" | resources.Get | minify }}
+  {{ $style := "theme.css" | resources.Get | minify | fingerprint }}
   <link href="{{ $style.RelPermalink }}" rel="stylesheet">
 
   {{ if (.Page.Store.Get "hasCodeBlock") }}
-    {{ $syntax := resources.Get "syntax.css" | minify }}
+    {{ $syntax := resources.Get "syntax.css" | minify | fingerprint }}
     <link href="{{ $syntax.RelPermalink }}" rel="stylesheet">
   {{ end }}
 
