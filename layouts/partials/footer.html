@@ -1,7 +1,6 @@
 <small>
   <a href='{{ absURL "index.xml" }}'>
     {{ $rss := resources.Get "rss.svg" | minify }}
-    <img width="9" height="auto" src="{{ $rss.RelPermalink }}">
-    RSS
+    <img width="9" height="9" alt="RSS" src="{{ $rss.RelPermalink }}">
   </a> | {{ markdownify .Site.Params.madeWith }}
 </small>
