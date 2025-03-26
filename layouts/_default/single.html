@@ -1,11 +1,13 @@
 {{ define "main" }}
 {{ if not .Params.menu }}
 <h2 align="left">{{ .Title }}</h2>
+{{ if .Date }}
 <p class="byline" align="right">
   <time datetime='{{ .Date.Format "2006-01-02" }}'>
     {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
   </time>
 </p>
+{{ end }}
 {{ end }}
 <content>
   {{ .Content }}
