@@ -30,18 +30,13 @@ document.querySelectorAll("img").forEach(img => {
       const prevZoom = zoomLevel;
 
       if (delta > 0) {
-        zoomLevel = Math.min(zoomLevel + zoomStep, 2);
-
-        // Pull image back toward center when zooming out
-        translateX *= zoomLevel / prevZoom;
-        translateY *= zoomLevel / prevZoom;
+        zoomLevel = Math.min(zoomLevel + zoomStep, 2.5);
       } else {
         zoomLevel = Math.max(zoomLevel - zoomStep, 0.5);
-
-        // Pull image back toward center when zooming out
-        translateX *= zoomLevel / prevZoom;
-        translateY *= zoomLevel / prevZoom;
       }
+
+      translateX *= zoomLevel / prevZoom;
+      translateY *= zoomLevel / prevZoom;
 
       updateTransform();
     }, { passive: false });
@@ -96,20 +91,17 @@ document.querySelectorAll("img").forEach(img => {
         if (lastDist !== null) {
           const prevZoom = zoomLevel;
           const delta = dist - lastDist;
-          const zoomStep = delta * 0.005;
+          const zoomStep = delta * 0.0075;
 
-          zoomLevel = Math.min(5, Math.max(0.5, zoomLevel + zoomStep));
+          zoomLevel = Math.min(5, Math.max(0.9, zoomLevel + zoomStep));
 
-          if (zoomLevel < prevZoom) {
-            // Recenter when pinch-zooming out
-            translateX *= zoomLevel / prevZoom;
-            translateY *= zoomLevel / prevZoom;
-          }
+          translateX *= zoomLevel / prevZoom;
+          translateY *= zoomLevel / prevZoom;
 
           updateTransform();
         }
-
         lastDist = dist;
+        isDragging = false;
       }
     }, { passive: false });
 
