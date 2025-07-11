@@ -69,8 +69,25 @@ document.querySelectorAll("img").forEach(img => {
     });
 
     let lastDist = null;
-    overlay.addEventListener("touchmove", e => {
-      if (e.touches.length === 2) {
+
+    zoomedImg.addEventListener("touchstart", e => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        zoomedImg.style.cursor = "grabbing";
+      }
+    });
+
+    zoomedImg.addEventListener("touchmove", e => {
+      if (isDragging && e.touches.length === 1) {
+        e.preventDefault();
+        translateX += e.touches[0].clientX - startX;
+        translateY += e.touches[0].clientY - startY;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        updateTransform();
+      } else if (e.touches.length === 2) {
         e.preventDefault();
         const dx = e.touches[0].clientX - e.touches[1].clientX;
         const dy = e.touches[0].clientY - e.touches[1].clientY;
@@ -96,7 +113,11 @@ document.querySelectorAll("img").forEach(img => {
       }
     }, { passive: false });
 
-    overlay.addEventListener("touchend", () => {
+    zoomedImg.addEventListener("touchend", e => {
+      if (e.touches.length === 0) {
+        isDragging = false;
+        zoomedImg.style.cursor = "grab";
+      }
       lastDist = null;
     });
 
