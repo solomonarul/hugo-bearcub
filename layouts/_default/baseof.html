@@ -45,6 +45,9 @@
     {{- partial "footer.html" . -}}
   </footer>
 
+  {{ $zoom_js := resources.Get "zoom.js" | minify | fingerprint }}
+  <script src="{{ $zoom_js.RelPermalink }}"></script>
+
   <!-- A partial to be overwritten by the user.
   Simply place a custom_body.html into
   your local /layouts/partials-directory -->
