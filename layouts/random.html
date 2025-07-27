@@ -4,7 +4,7 @@
 
     <script>
       const pages = [
-        {{ range where .Site.RegularPages "RelPermalink" "ne" "/random/" }}
+        {{ range where .Site.AllPages "RelPermalink" "not in" (slice "/random/" "/tags/" "/categories/") }}
           "{{ .RelPermalink }}",
         {{ end }}
       ];

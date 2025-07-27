@@ -6,29 +6,32 @@
     <h3 class="blog-filter">{{ i18n "filtering-for" }} "{{ .Title }}"</h3>
   {{ end }}
   <ul class="blog-posts">
-    {{ range .Pages }}
-    {{ if .Title }}
-    <li>
-      {{ if .Date }}
-      <span>
-        <i>
-          <time datetime='{{ .Date.Format "02.01.2006" }}' pubdate>
-            {{ .Date.Format (default "02.01.2006" .Site.Params.dateFormat) }}
-          </time>
-        </i>
-      </span>
+    {{ $filteredPages := where .Pages "Params.list-hide" "ne" true }}
+    {{ if $filteredPages }}
+      {{ range $filteredPages }}
+      {{ if .Title }}
+      <li>
+        {{ if .Date }}
+        <span>
+          <i>
+            <time datetime='{{ .Date.Format "02.01.2006" }}' pubdate>
+              {{ .Date.Format (default "02.01.2006" .Site.Params.dateFormat) }}
+            </time>
+          </i>
+        </span>
+        {{ end }}
+        {{ if .Params.link }}
+          <a href="{{ .Params.link }}" target="_blank">{{ .Title }} ↪</a>
+        {{ else }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ end }}
+      </li>
       {{ end }}
-      {{ if .Params.link }}
-        <a href="{{ .Params.link }}" target="_blank">{{ .Title }} ↪</a>
       {{ else }}
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <li>
+        {{ i18n "no-posts" }}
+      </li>
       {{ end }}
-    </li>
-    {{ end }}
-    {{ else }}
-    <li>
-      {{ i18n "no-posts" }}
-    </li>
     {{ end }}
   </ul>
   {{ if not .Data.Singular }}
