@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <main>
+    <div>{{ .Content }}</div>
+
+    <script>
+      const pages = [
+        {{ range where .Site.RegularPages "RelPermalink" "ne" "/random/" }}
+          "{{ .RelPermalink }}",
+        {{ end }}
+      ];
+      const target = pages[Math.floor(Math.random() * pages.length)];
+      setTimeout(() => {
+        window.location.href = target;
+      }, 1750);
+    </script>
+  </main>
+{{ end }}
