@@ -1,11 +1,36 @@
-.grid-2 {
-    display: flex;
-    gap: 10px;
+.gap-1 {
+    gap: 1em;
 }
-.grid-2 img {
-    width: 50%;
+.gap-05 {
+    gap: 0.5em;
+}
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.h-auto {
     height: auto;
-    display: block;
+}
+.m-auto {
+    margin: auto;
+}
+.w-100 {
+    width: 100%;
+}
+.w-50 {
+    width: 50%;
+}
+.d-flex {
+    display: flex;
+}
+.pb-2 {
+    padding-bottom: 2em;
+}
+.pb-1 {
+    padding-bottom: 1em;
+}
+.pb-05 {
+    padding-bottom: 0.5em;
 }
 .zoom-overlay {
     position: fixed;

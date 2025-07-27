@@ -5,7 +5,8 @@ document.querySelectorAll("img").forEach(img => {
     const overlay = document.createElement("div");
     overlay.className = "zoom-overlay";
 
-    const zoomedImg = img.cloneNode();
+    const zoomedImg = document.createElement("img");
+    zoomedImg.src = img.src;
     zoomedImg.style.transformOrigin = "center center";
     zoomedImg.style.transform = "scale(1.0)";
     zoomedImg.style.cursor = "grab";

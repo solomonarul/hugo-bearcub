@@ -7,6 +7,7 @@
   {{ end }}
   <ul class="blog-posts">
     {{ range .Pages }}
+    {{ if .Title }}
     <li>
       {{ if .Date }}
       <span>
@@ -23,6 +24,7 @@
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       {{ end }}
     </li>
+    {{ end }}
     {{ else }}
     <li>
       {{ i18n "no-posts" }}
