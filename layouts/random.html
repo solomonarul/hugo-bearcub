@@ -4,11 +4,12 @@
 
     <script>
       const pages = [
-        {{ range where .Site.AllPages "RelPermalink" "not in" (slice "/random/" "/tags/" "/categories/") }}
+        {{ range where .Site.AllPages "RelPermalink" "not in" (slice "/" "/random/" "/tags/" "/categories/") }}
           "{{ .RelPermalink }}",
         {{ end }}
       ];
-      const target = pages[Math.floor(Math.random() * pages.length)];
+      console.log(pages);
+      const target = pages[Math.round(Math.random() * pages.length)];
       setTimeout(() => {
         window.location.href = target;
       }, 1750);
