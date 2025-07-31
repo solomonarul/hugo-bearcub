@@ -1,40 +1,7 @@
-.gap-1 {
-    gap: 1em;
-}
-.gap-05 {
-    gap: 0.5em;
-}
-.mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-}
-.h-auto {
-    height: auto;
-}
-.m-auto {
-    margin: auto;
-}
-.w-100 {
-    width: 100%;
-}
-.w-75 {
-    width: 75%;
-}
-.w-50 {
-    width: 50%;
-}
-.d-flex {
-    display: flex;
-}
-.pb-2 {
-    padding-bottom: 2em;
-}
-.pb-1 {
-    padding-bottom: 1em;
-}
-.pb-05 {
-    padding-bottom: 0.5em;
-}
+@import "tailwindcss";
+@source "hugo_stats.json";
+@plugin "@tailwindcss/typography";
+
 .zoom-overlay {
     position: fixed;
     inset: 0;
@@ -66,12 +33,6 @@
     max-height: 95vh;
     transition: transform 0.1s ease;
     will-change: transform;
-}
-.inline-emoji {
-    height: 3em;
-    vertical-align: middle;
-    margin-left: 0.2em;
-    line-height: 2em;
 }
 input,
 textarea {
@@ -90,7 +51,6 @@ body {
 body {
     font-family: Verdana, sans-serif;
     margin: auto;
-    padding: 20px;
     max-width: 720px;
     text-align: left;
     word-wrap: break-word;
@@ -121,9 +81,6 @@ a {
 }
 .title span {
     font-weight: 400;
-}
-nav a {
-    margin-right: 10px;
 }
 content {
     line-height: 1.6;
@@ -198,9 +155,6 @@ h3.blog-filter {
     color: currentColor;
     cursor: not-allowed;
     opacity: 0.7;
-}
-p.byline {
-    font-style: italic;
 }
 .skip-link {
     position: absolute;

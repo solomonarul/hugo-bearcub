@@ -11,8 +11,18 @@
   {{- partial "seo_tags.html" . -}}
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  {{ $style := "theme.css" | resources.Get | minify | fingerprint }}
-  <link href="{{ $style.RelPermalink }}" rel="stylesheet">
+  {{ with resources.Get "theme.css" }}
+    {{ $opts := dict "minify" (not hugo.IsDevelopment) }}
+    {{ with . | css.TailwindCSS $opts }}
+      {{ if hugo.IsDevelopment }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{ else }}
+        {{ with . | fingerprint }}
+          <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
 
   {{ if (.Page.Store.Get "hasCodeBlock") }}
     {{ $syntax := resources.Get "syntax.css" | minify | fingerprint }}
@@ -34,7 +44,7 @@
   {{- partial "custom_head.html" . -}}
 </head>
 
-<body>
+<body class="p-[0.5em]">
   <header>
     {{- partial "header.html" . -}}
   </header>

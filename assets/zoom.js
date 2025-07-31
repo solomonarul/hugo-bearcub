@@ -1,4 +1,4 @@
-document.querySelectorAll("img").forEach(img => {
+document.querySelectorAll("img:not(a img)").forEach(img => {
   img.style.cursor = "zoom-in";
 
   img.addEventListener("click", () => {
