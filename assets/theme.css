@@ -118,10 +118,6 @@ blockquote {
     border-left: 1px solid #999;
     padding-left: 20px;
 }
-footer {
-    padding: 25px;
-    text-align: center;
-}
 .helptext {
     color: #aaa;
     font-size: small;
