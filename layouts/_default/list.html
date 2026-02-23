@@ -25,7 +25,11 @@
         {{ else }}
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         {{ end }}
+        {{ if .Description }}
+          <p class="ml-[3.25em]">  {{ .Description }} </p>
+        {{ end }}
       </li>
+
       {{ end }}
       {{ else }}
       <li>
