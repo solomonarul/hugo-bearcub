@@ -2,16 +2,19 @@
   <main>
     <div>{{ .Content }}</div>
 
-    <script>
-      const pages = [
-        {{ range where .Site.AllPages "RelPermalink" "not in" (slice "/" "/random/" "/tags/" "/categories/") }}
+    <script type="text/javascript">
+      var pages = [
+        {{ range where .Site.AllPages "RelPermalink" "not in" (slice "/" "/random/" "/tags/" "/categories/" "/posts/" "/about/") }}
           "{{ .RelPermalink }}",
         {{ end }}
       ];
       console.log(pages);
-      const target = pages[Math.round(Math.random() * pages.length)];
-      setTimeout(() => {
-        window.location.href = target;
+      setTimeout(function() {
+        var randomIndex = Math.floor(Math.random() * pages.length);
+        var target = pages[randomIndex];
+        if (target) {
+          window.location.href = target;
+        }
       }, 1750);
     </script>
   </main>
