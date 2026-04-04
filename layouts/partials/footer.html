@@ -1,13 +1,9 @@
 <small>
   <a href='{{ absURL "index.xml" }}'>
     {{ $rss := resources.Get "rss.svg" | minify }}
-    <img class="inline-flex size-[1em]" alt="RSS" src="{{ $rss.RelPermalink }}">
+    <img style="width: auto; height: 1em;" class="inline-flex" alt="RSS" src="{{ $rss.RelPermalink }}">
   </a> | {{ markdownify .Site.Params.madeWith }}
 </small>
-</br>
-<a href="https://solomonarul.github.io/book-of-everything">
-  <small>Also check out The Book of Everything</small>
-</a>
 </br>
 <a href='/random/'>
   <small>
