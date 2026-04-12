@@ -1,12 +1,14 @@
-<small>
-  <a href='{{ absURL "index.xml" }}'>
-    {{ $rss := resources.Get "rss.svg" | minify }}
-    <img style="width: auto; height: 1em;" class="inline-flex" alt="RSS" src="{{ $rss.RelPermalink }}">
-  </a> | {{ markdownify .Site.Params.madeWith }}
-</small>
-</br>
-<a href='/random/'>
+<p align="center">
   <small>
-    Feeling lucky?
+    <a href='{{ absURL "index.xml" }}'>
+      {{ $rss := resources.Get "rss.svg" | minify }}
+      <img style="width: auto; height: 1em;" class="inline-flex" alt="RSS" src="{{ $rss.RelPermalink }}">
+    </a> | {{ markdownify .Site.Params.madeWith }}
   </small>
-</a>
+  </br>
+  <a href='/random/'>
+    <small>
+      Feeling lucky?
+    </small>
+  </a>
+</p>

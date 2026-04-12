@@ -130,8 +130,10 @@ ul.blog-posts {
     padding: unset;
 }
 ul.blog-posts li {
-    display: flex;
     margin-bottom: 10px;
+}
+ul.blog-posts li div {
+    display: flex;
 }
 ul.blog-posts li span {
     flex: 0 0 130px;

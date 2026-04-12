@@ -44,14 +44,14 @@
   {{- partial "custom_head.html" . -}}
 </head>
 
-<body class="p-[0.5em]">
+<body class="p-2">
   <header>
     {{- partial "header.html" . -}}
   </header>
   <main id="main-content">
     {{- block "main" . }}{{- end }}
   </main>
-  <footer class="pt-[1em] pb-[1em] text-center">
+  <footer class="py-5">
     {{- partial "footer.html" . -}}
   </footer>
 
