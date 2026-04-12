@@ -1,18 +1,20 @@
 {{ define "main" }}
 {{ if not .Params.menu }}
 
-<div class="py-4 flex items-baseline justify-between">
-  <h2 class="text-2xl font-bold m-0">
+<div class="py-4">
+  <h2 class="text-2xl font-bold m-0" style="display:inline;">
     {{ .Title }}
   </h2>
 
   {{ if .Date }}
-  <p class="italic m-0">
+  <span class="italic float-right">
     <time datetime='{{ .Date.Format "2006-01-02" }}'>
-      {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+      {{ .Date.Format "02.01.2006" }}
     </time>
-  </p>
+  </span>
   {{ end }}
+
+  <div style="clear:both;"></div>
 </div>
 
 {{ end }}
