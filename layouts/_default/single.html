@@ -1,22 +1,30 @@
 {{ define "main" }}
 {{ if not .Params.menu }}
-<div class="py-4">
-<h2 class="text-2xl font-bold">{{ .Title }}</h2>
-{{ if .Date }}
-<p class="italic" align="right">
-  <time datetime='{{ .Date.Format "2006-01-02" }}'>
-    {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
-  </time>
-</p>
-{{ end }}
+
+<div class="py-4 flex items-baseline justify-between">
+  <h2 class="text-2xl font-bold m-0">
+    {{ .Title }}
+  </h2>
+
+  {{ if .Date }}
+  <p class="italic m-0">
+    <time datetime='{{ .Date.Format "2006-01-02" }}'>
+      {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+    </time>
+  </p>
+  {{ end }}
 </div>
+
 {{ end }}
+
 <content class="prose prose-invert">
   {{ .Content }}
 </content>
+
 <p>
   {{ range (.GetTerms "tags") }}
     <a class="blog-tags" href="{{ .RelPermalink }}">#{{ lower .LinkTitle }}</a>
   {{ end }}
 </p>
+
 {{ end }}
