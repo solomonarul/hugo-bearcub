@@ -164,3 +164,22 @@ figcaption > p {
 a {
     text-decoration: none;
 }
+
+/* A bit of vibe coding, sorry... */
+
+/* Fallback for older browsers like PSVita */
+.post-date {
+  float: right; /* Pushes the date to the right in old browsers */
+  white-space: nowrap; /* Prevents wrapping */
+}
+
+/* Ensures the flex-based layout is used for modern browsers */
+@supports (display: flex) {
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .post-date {
+    margin-left: auto; /* Pushes the date to the right in flexbox-supported browsers */
+  }
+}
