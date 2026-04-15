@@ -1,22 +1,23 @@
 {{ define "main" }}
 {{ if not .Params.menu }}
 
-<div class="py-4">
-  <h2 class="text-2xl font-bold m-0" style="display:inline;">
-    {{ .Title }}
-  </h2>
+<div class="py-4 flex header">
+  <div class="inline-block">
+    <h2 class="text-2xl font-bold m-0">
+      {{ .Title }}
+    </h2>
+  </div>
 
   {{ if .Date }}
-  <span class="italic float-right">
-    <time datetime='{{ .Date.Format "2006-01-02" }}'>
-      {{ .Date.Format "02.01.2006" }}
-    </time>
-  </span>
+  <div class="inline-block ml-auto date">
+    <span class="italic">
+      <time datetime='{{ .Date.Format "2006-01-02" }}'>
+        {{ .Date.Format "02.01.2006" }}
+      </time>
+    </span>
+  </div>
   {{ end }}
-
-  <div style="clear:both;"></div>
 </div>
-
 {{ end }}
 
 <content class="prose prose-invert">
